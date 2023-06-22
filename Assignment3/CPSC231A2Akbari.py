@@ -90,10 +90,17 @@ if (b**2 - (4*a*c)) < 0:
     pointer.write("No Intersection!", align="center", font=("Arial", 16, "normal"))
 
 
-# If the discriminant is equal to zero there is one intersection
+# If the discriminant is equal to zero there is either one or no intersections
 elif (b**2 - (4*a*c)) == 0:
-    pointer.goto(MIDDLEX, MIDDLEY)
-    pointer.write("One Intersection!", align="center", font=("Arial", 16, "normal"))
+
+    # If any of the alpha values are outside the limits than there are no intersections
+    if (alpha1 > 1 or alpha1 < 0) and (alpha2 > 1 or alpha2 < 0):
+        pointer.goto(MIDDLEX, MIDDLEY)
+        pointer.write("No Intersection!", align="center", font=("Arial", 16, "normal"))
+    # Otherwise there is one intersection
+    else:
+        pointer.goto(MIDDLEX, MIDDLEY)
+        pointer.write("One Intersection!", align="center", font=("Arial", 16, "normal"))
 
 # Otherwise discriminant is greater than zero
 else:
